@@ -1,0 +1,187 @@
+ARM GAS  C:\Users\luisa\AppData\Local\Temp\cc3vNUv5.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"main.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.delay_ms,"ax",%progbits
+  18              		.align	1
+  19              		.global	delay_ms
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  24              	delay_ms:
+  25              	.LVL0:
+  26              	.LFB1:
+  27              		.file 1 "Src/main.c"
+   1:Src/main.c    **** #include "stm32f103_regs.h"
+   2:Src/main.c    **** 
+   3:Src/main.c    **** void delay_ms(uint32_t t);
+   4:Src/main.c    **** 
+   5:Src/main.c    **** int main() {
+   6:Src/main.c    ****     RCC_APB2ENR |= (1<<IOPC_EN);
+   7:Src/main.c    ****     GPIOC_CRH |= (0b11<<20);
+   8:Src/main.c    **** 
+   9:Src/main.c    ****     while (1) {
+  10:Src/main.c    ****         GPIOC_ODR ^= (1<<13);
+  11:Src/main.c    ****         delay_ms(100);
+  12:Src/main.c    ****     }
+  13:Src/main.c    **** 
+  14:Src/main.c    ****     return 0;
+  15:Src/main.c    **** }
+  16:Src/main.c    **** 
+  17:Src/main.c    **** void delay_ms(uint32_t t) {
+  28              		.loc 1 17 27 view -0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              		@ link register save eliminated.
+  18:Src/main.c    ****     for (; t > 0; t--)
+  33              		.loc 1 18 5 view .LVU1
+  34 0000 05E0     		b	.L2
+  35              	.LVL1:
+  36              	.L3:
+  37              	.LBB2:
+  19:Src/main.c    ****         for (uint32_t i = 0; i < 1000; i++)
+  20:Src/main.c    ****             __asm__ volatile("nop");
+  38              		.loc 1 20 13 discriminator 3 view .LVU2
+ARM GAS  C:\Users\luisa\AppData\Local\Temp\cc3vNUv5.s 			page 2
+
+
+  39              		.syntax unified
+  40              	@ 20 "Src/main.c" 1
+  41 0002 00BF     		nop
+  42              	@ 0 "" 2
+  19:Src/main.c    ****         for (uint32_t i = 0; i < 1000; i++)
+  43              		.loc 1 19 40 discriminator 3 view .LVU3
+  19:Src/main.c    ****         for (uint32_t i = 0; i < 1000; i++)
+  44              		.loc 1 19 41 is_stmt 0 discriminator 3 view .LVU4
+  45              		.thumb
+  46              		.syntax unified
+  47 0004 0133     		adds	r3, r3, #1
+  48              	.LVL2:
+  49              	.L4:
+  19:Src/main.c    ****         for (uint32_t i = 0; i < 1000; i++)
+  50              		.loc 1 19 30 is_stmt 1 discriminator 1 view .LVU5
+  19:Src/main.c    ****         for (uint32_t i = 0; i < 1000; i++)
+  51              		.loc 1 19 9 is_stmt 0 discriminator 1 view .LVU6
+  52 0006 B3F57A7F 		cmp	r3, #1000
+  53 000a FAD3     		bcc	.L3
+  54              	.LBE2:
+  18:Src/main.c    ****     for (; t > 0; t--)
+  55              		.loc 1 18 19 is_stmt 1 view .LVU7
+  18:Src/main.c    ****     for (; t > 0; t--)
+  56              		.loc 1 18 20 is_stmt 0 view .LVU8
+  57 000c 0138     		subs	r0, r0, #1
+  58              	.LVL3:
+  59              	.L2:
+  18:Src/main.c    ****     for (; t > 0; t--)
+  60              		.loc 1 18 12 is_stmt 1 discriminator 1 view .LVU9
+  18:Src/main.c    ****     for (; t > 0; t--)
+  61              		.loc 1 18 5 is_stmt 0 discriminator 1 view .LVU10
+  62 000e 08B1     		cbz	r0, .L6
+  63              	.LBB3:
+  19:Src/main.c    ****         for (uint32_t i = 0; i < 1000; i++)
+  64              		.loc 1 19 23 view .LVU11
+  65 0010 0023     		movs	r3, #0
+  66 0012 F8E7     		b	.L4
+  67              	.L6:
+  68              	.LBE3:
+  21:Src/main.c    **** }
+  69              		.loc 1 21 1 view .LVU12
+  70 0014 7047     		bx	lr
+  71              		.cfi_endproc
+  72              	.LFE1:
+  74              		.section	.text.main,"ax",%progbits
+  75              		.align	1
+  76              		.global	main
+  77              		.syntax unified
+  78              		.thumb
+  79              		.thumb_func
+  81              	main:
+  82              	.LFB0:
+   5:Src/main.c    ****     RCC_APB2ENR |= (1<<IOPC_EN);
+  83              		.loc 1 5 12 is_stmt 1 view -0
+  84              		.cfi_startproc
+  85              		@ Volatile: function does not return.
+  86              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  C:\Users\luisa\AppData\Local\Temp\cc3vNUv5.s 			page 3
+
+
+  87              		@ frame_needed = 0, uses_anonymous_args = 0
+  88 0000 08B5     		push	{r3, lr}
+  89              	.LCFI0:
+  90              		.cfi_def_cfa_offset 8
+  91              		.cfi_offset 3, -8
+  92              		.cfi_offset 14, -4
+   6:Src/main.c    ****     GPIOC_CRH |= (0b11<<20);
+  93              		.loc 1 6 5 view .LVU14
+   6:Src/main.c    ****     GPIOC_CRH |= (0b11<<20);
+  94              		.loc 1 6 17 is_stmt 0 view .LVU15
+  95 0002 0A4A     		ldr	r2, .L10
+  96 0004 9369     		ldr	r3, [r2, #24]
+  97 0006 43F01003 		orr	r3, r3, #16
+  98 000a 9361     		str	r3, [r2, #24]
+   7:Src/main.c    **** 
+  99              		.loc 1 7 5 is_stmt 1 view .LVU16
+   7:Src/main.c    **** 
+ 100              		.loc 1 7 15 is_stmt 0 view .LVU17
+ 101 000c A2F58032 		sub	r2, r2, #65536
+ 102 0010 5368     		ldr	r3, [r2, #4]
+ 103 0012 43F44013 		orr	r3, r3, #3145728
+ 104 0016 5360     		str	r3, [r2, #4]
+ 105              	.L8:
+   9:Src/main.c    ****         GPIOC_ODR ^= (1<<13);
+ 106              		.loc 1 9 5 is_stmt 1 discriminator 1 view .LVU18
+  10:Src/main.c    ****         delay_ms(100);
+ 107              		.loc 1 10 9 discriminator 1 view .LVU19
+  10:Src/main.c    ****         delay_ms(100);
+ 108              		.loc 1 10 19 is_stmt 0 discriminator 1 view .LVU20
+ 109 0018 054A     		ldr	r2, .L10+4
+ 110 001a D368     		ldr	r3, [r2, #12]
+ 111 001c 83F40053 		eor	r3, r3, #8192
+ 112 0020 D360     		str	r3, [r2, #12]
+  11:Src/main.c    ****     }
+ 113              		.loc 1 11 9 is_stmt 1 discriminator 1 view .LVU21
+ 114 0022 6420     		movs	r0, #100
+ 115 0024 FFF7FEFF 		bl	delay_ms
+ 116              	.LVL4:
+   9:Src/main.c    ****         GPIOC_ODR ^= (1<<13);
+ 117              		.loc 1 9 11 discriminator 1 view .LVU22
+ 118 0028 F6E7     		b	.L8
+ 119              	.L11:
+ 120 002a 00BF     		.align	2
+ 121              	.L10:
+ 122 002c 00100240 		.word	1073876992
+ 123 0030 00100140 		.word	1073811456
+ 124              		.cfi_endproc
+ 125              	.LFE0:
+ 127              		.text
+ 128              	.Letext0:
+ 129              		.file 2 "c:\\dev\\tools\\gcc-arm-none-eabi-10.3-2021.10\\arm-none-eabi\\include\\machine\\_default
+ 130              		.file 3 "c:\\dev\\tools\\gcc-arm-none-eabi-10.3-2021.10\\arm-none-eabi\\include\\sys\\_stdint.h"
+ARM GAS  C:\Users\luisa\AppData\Local\Temp\cc3vNUv5.s 			page 4
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 main.c
+C:\Users\luisa\AppData\Local\Temp\cc3vNUv5.s:18     .text.delay_ms:00000000 $t
+C:\Users\luisa\AppData\Local\Temp\cc3vNUv5.s:24     .text.delay_ms:00000000 delay_ms
+C:\Users\luisa\AppData\Local\Temp\cc3vNUv5.s:75     .text.main:00000000 $t
+C:\Users\luisa\AppData\Local\Temp\cc3vNUv5.s:81     .text.main:00000000 main
+C:\Users\luisa\AppData\Local\Temp\cc3vNUv5.s:122    .text.main:0000002c $d
+
+NO UNDEFINED SYMBOLS
